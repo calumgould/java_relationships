@@ -1,5 +1,7 @@
 package com.codeclan.example.filesAndFolders.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,7 @@ public class File {
     @Column
     private double size;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "folder_id")
     private Folder folder;
