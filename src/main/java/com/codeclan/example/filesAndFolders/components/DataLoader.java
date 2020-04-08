@@ -58,8 +58,6 @@ public class DataLoader implements ApplicationRunner {
         File tiger = new File("snowTiger", "tiff", 27, picsTongue);
         fileRepository.save(tiger);
 
-
-
     }
 
 

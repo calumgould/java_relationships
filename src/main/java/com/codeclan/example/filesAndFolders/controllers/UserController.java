@@ -16,18 +16,19 @@ public class UserController {
     UserRepository userRepository;
 
     @GetMapping(value = "/users")
-    public ResponseEntity<List<User>> getAllUsers(){
-        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity getAllUsers(){
+        List<User> users = userRepository.findAll();
+        return new ResponseEntity(users, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/users/{id}")
+    @GetMapping(value="/users/{id}")
     public ResponseEntity getUser(@PathVariable Long id){
-        return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
+        return new ResponseEntity(userRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/users")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    @PostMapping(value="/users")
+    public ResponseEntity postUser(@RequestBody User user){
         userRepository.save(user);
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
+        return new ResponseEntity(user, HttpStatus.CREATED);
     }
 }
